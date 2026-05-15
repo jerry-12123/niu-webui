@@ -1,0 +1,16 @@
+name: Sync to Gitee
+on: [push]
+jobs:
+  repo-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror the Github repo to Gitee
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/jerry-12123
+          dst: gitee/jerry-12123
+          dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
+          dst_token: ${{ secrets.GITEE_TOKEN }}
+          static_list: "niu-webui"
+          force_update: true
+          debug: true
